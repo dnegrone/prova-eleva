@@ -23,6 +23,16 @@ const routes: Routes = [
     path: 'turma/cadastrar',
     component: CadastrarTurmaComponent
   },
+  {
+    path: '',
+    redirectTo: '/',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: '/',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
