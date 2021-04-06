@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CadastrarTurmaModule } from './cadastrar/cadastrar-turma.module';
-import { ListarTurmaModule } from './listar/listar-turma.module';
+import { ListarTurmaComponent } from './listar/listar-turma.component';
+import { CadastrarTurmaComponent } from './cadastrar/cadastrar-turma.component';
 
 @NgModule({
+    declarations: [
+        ListarTurmaComponent,
+        CadastrarTurmaComponent
+    ],
     imports: [
-        CommonModule,
-        CadastrarTurmaModule,
-        ListarTurmaModule
+        CommonModule
     ]
 })
 export class TurmaModule { }

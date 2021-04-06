@@ -3,8 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListarEscolaComponent } from './escola/listar/listar-escola.component';
 import { CadastrarEscolaComponent } from './escola/cadastrar/cadastrar-escola.component';
-import { ListarTurmaComponent } from './turma/listar/listar-turma.component';
-import { CadastrarTurmaComponent } from './turma/cadastrar/cadastrar-turma.component';
+import { DetalhesEscolaComponent } from './escola/detalhes/detalhes-escola.component';
 
 const routes: Routes = [
   {
@@ -16,12 +15,8 @@ const routes: Routes = [
     component: CadastrarEscolaComponent
   },
   {
-    path: 'turma',
-    component: ListarTurmaComponent
-  },
-  {
-    path: 'turma/cadastrar',
-    component: CadastrarTurmaComponent
+    path: 'escola/detalhes',
+    component: DetalhesEscolaComponent
   },
   {
     path: '',

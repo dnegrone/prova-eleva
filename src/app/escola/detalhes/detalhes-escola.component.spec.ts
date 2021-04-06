@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PageHeaderComponent } from './page-header.component';
+import { DetalhesEscolaComponent } from './detalhes-escola.component';
 
-describe('PageHeaderComponent', () => {
-  let component: PageHeaderComponent;
-  let fixture: ComponentFixture<PageHeaderComponent>;
+describe('DetalhesEscolaComponent', () => {
+  let component: DetalhesEscolaComponent;
+  let fixture: ComponentFixture<DetalhesEscolaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PageHeaderComponent ]
+      declarations: [ DetalhesEscolaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PageHeaderComponent);
+    fixture = TestBed.createComponent(DetalhesEscolaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

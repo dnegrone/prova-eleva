@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-escola',
@@ -7,9 +9,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarEscolaComponent implements OnInit {
 
-  constructor() { }
+  cadastrarEscolaForm!: FormGroup;
+  enviado = false;
+  KEY: string = 'escola';
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.cadastrarEscolaForm = this.formBuilder.group({
+      nomeEscola: ['', Validators.required],
+      nomeResponsavelEscola: ['', Validators.required],
+      cnpj: ['', Validators.required],
+      qtdAlunos: ['', Validators.required]
+    });
+
+    this.getSessionStorage();
+  }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.cadastrarEscolaForm.controls; }
+
+  onSubmit() {
+    this.enviado = true;
+
+    // Formulário inválido não será enviado
+    if(this.cadastrarEscolaForm.invalid) {
+      return;
+    }
+
+    // display form values on success
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.cadastrarEscolaForm.value, null, 4));
+    sessionStorage.setItem(this.KEY, JSON.stringify(this.cadastrarEscolaForm.value));
+    this.router.navigateByUrl('/escola/detalhes')
+  }
+
+  onReset() {
+    this.enviado = false;
+    this.cadastrarEscolaForm.reset();
+  }
+
+  getSessionStorage() {
+    if (sessionStorage.modificar) {
+      const dadosEscola = JSON.parse(sessionStorage.escola);
+
+      this.cadastrarEscolaForm = this.formBuilder.group({
+        nomeEscola: [dadosEscola.nomeEscola, Validators.required],
+        nomeResponsavelEscola: [dadosEscola.nomeResponsavelEscola, Validators.required],
+        cnpj: [dadosEscola.cnpj, Validators.required],
+        qtdAlunos: [dadosEscola.qtdAlunos, Validators.required]
+      });
+    }
   }
 
 }
