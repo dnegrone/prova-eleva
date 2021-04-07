@@ -35,7 +35,9 @@ export class DetalhesEscolaComponent implements OnInit {
 
   confirmaCadastroEscola(){
     alert('Escola cadastrada com sucesso!');
-    sessionStorage.removeItem('escola');
+    this.storageService.setSessionStorage('db_escola', this.dadosEscola);
+    this.storageService.removeSessionStorage('escola');
+    // sessionStorage.removeItem('escola');
     this.router.navigateByUrl('/escola');
   }
 

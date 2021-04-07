@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from '../../core/storage/storage.service';
 
 @Component({
   selector: 'app-listar-escola',
@@ -8,9 +9,24 @@ import { Router } from '@angular/router';
 })
 export class ListarEscolaComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  @Output() escola: any;
+
+  constructor(
+    private router: Router,
+    private storageService: StorageService
+  ) { }
 
   ngOnInit(): void {
+    this.startDb('db_escola');
+  }
+
+  startDb(key: string) {
+    if(this.storageService.hasSessionStorage(key)) {
+      this.escola = this.storageService.getSessionStorage(key);
+      return this.escola;
+    }
+    
+    // this.storageService.getSessionStorage('db_escola');
   }
 
   cadastrar() {

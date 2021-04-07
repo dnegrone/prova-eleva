@@ -1,12 +1,17 @@
 <div class="container">
     <div class="page-header mt-3 mb-3">
-        <h2>Lista de Escolas</h2>
+        <h2>
+            <span class="d-none d-md-block">Lista de Escolas</span>
+            <span class="h4 d-block d-md-none">Lista de Escolas</span>
+        </h2>
+        <div class="float-right">
+            <a (click)="cadastrar()"
+                class="btn btn-outline-secondary btn-sm">
+                <i class="d-block d-md-none fa fa-plus"></i>
+                <span class="d-none d-md-block">Cadastrar Nova Escola</span>
+            </a>
+        </div>
     </div>
-    <a (click)="cadastrar()"
-        class="btn btn-outline-secondary btn-sm float-right">
-        <i class="d-block d-md-none fa fa-plus"></i>
-        <span class="d-none d-md-block">Cadastrar Nova Escola</span>
-    </a>
     <div class="clearfix"></div>
     <form>
         <div class="row">
@@ -31,73 +36,31 @@
     </form>
     <div class="resultados mt-5">
         <h3 class="h6 text-muted">Foram encontradas 5 escolas</h3>
-        <table class="table table-responsive">
-            <thead class="bg-verde-claro">
-                <tr>
-                    <th>Nome da Escola</th>
-                    <th>CNPJ</th>
-                    <th>Ano Letivo</th>
-                    <th>Qtd. de Alunos</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Escola Ana Celeste</td>
-                    <td>34.191.670/0001-49</td>
-                    <td>2021</td>
-                    <td>500</td>
-                    <td>
-                        <a routerLink="/escola/:id" (click)="editar()" class="mr-2"><i class="fa fa-pencil"></i></a>
-                        <a routerLink="/escola/:id" (click)="detalhes()" class="mr-2"><i class="fa fa-search"></i></a>
-                        <a routerLink="/escola/:id" (click)="excluir()"><i class="fa fa-close"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Escola Ana Celeste</td>
-                    <td>34.191.670/0001-49</td>
-                    <td>2021</td>
-                    <td>500</td>
-                    <td>
-                        <a routerLink="/escola/:id" (click)="editar()" class="mr-2"><i class="fa fa-pencil"></i></a>
-                        <a routerLink="/escola/:id" (click)="detalhes()" class="mr-2"><i class="fa fa-search"></i></a>
-                        <a routerLink="/escola/:id" (click)="excluir()"><i class="fa fa-close"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Escola Ana Celeste</td>
-                    <td>34.191.670/0001-49</td>
-                    <td>2021</td>
-                    <td>500</td>
-                    <td>
-                        <a routerLink="/escola/:id" (click)="editar()" class="mr-2"><i class="fa fa-pencil"></i></a>
-                        <a routerLink="/escola/:id" (click)="detalhes()" class="mr-2"><i class="fa fa-search"></i></a>
-                        <a routerLink="/escola/:id" (click)="excluir()"><i class="fa fa-close"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Escola Ana Celeste</td>
-                    <td>34.191.670/0001-49</td>
-                    <td>2021</td>
-                    <td>500</td>
-                    <td>
-                        <a routerLink="/escola/:id" (click)="editar()" class="mr-2"><i class="fa fa-pencil"></i></a>
-                        <a routerLink="/escola/:id" (click)="detalhes()" class="mr-2"><i class="fa fa-search"></i></a>
-                        <a routerLink="/escola/:id" (click)="excluir()"><i class="fa fa-close"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Escola Ana Celeste</td>
-                    <td>34.191.670/0001-49</td>
-                    <td>2021</td>
-                    <td>500</td>
-                    <td>
-                        <a routerLink="/escola/:id" (click)="editar()" class="mr-2"><i class="fa fa-pencil"></i></a>
-                        <a routerLink="/escola/:id" (click)="detalhes()" class="mr-2"><i class="fa fa-search"></i></a>
-                        <a routerLink="/escola/:id" (click)="excluir()"><i class="fa fa-close"></i></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive-sm">
+            <table class="table">
+                <thead class="bg-verde-claro">
+                    <tr>
+                        <th>Nome da Escola</th>
+                        <th>CNPJ</th>
+                        <th>Ano Letivo</th>
+                        <th>Qtd. de Alunos</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{escola.nomeEscola}}</td>
+                        <td>{{escola.nomeResponsavelEscola}}</td>
+                        <td>{{escola.cnpj}}</td>
+                        <td>{{escola.qtdAlunos}}</td>
+                        <td>
+                            <a routerLink="/escola/:id" (click)="editar()" class="mr-2"><i class="fa fa-pencil"></i></a>
+                            <a routerLink="/escola/:id" (click)="detalhes()" class="mr-2"><i class="fa fa-search"></i></a>
+                            <a routerLink="/escola/:id" (click)="excluir()"><i class="fa fa-close"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
