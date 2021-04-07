@@ -1,14 +1,13 @@
 <div class="container">
     <div class="page-header mt-3 mb-3">
-        <h2>
-            Lista de Escolas
-            <a
-            (click)="cadastrar()"
-            class="btn btn-outline-secondary btn-sm float-right">
-                Cadastrar Nova Escola
-            </a>
-        </h2>
+        <h2>Lista de Escolas</h2>
     </div>
+    <a (click)="cadastrar()"
+        class="btn btn-outline-secondary btn-sm float-right">
+        <i class="d-block d-md-none fa fa-plus"></i>
+        <span class="d-none d-md-block">Cadastrar Nova Escola</span>
+    </a>
+    <div class="clearfix"></div>
     <form>
         <div class="row">
             <div class="form-group col-12 col-md-4">
@@ -32,7 +31,7 @@
     </form>
     <div class="resultados mt-5">
         <h3 class="h6 text-muted">Foram encontradas 5 escolas</h3>
-        <table class="table">
+        <table class="table table-responsive">
             <thead class="bg-verde-claro">
                 <tr>
                     <th>Nome da Escola</th>
