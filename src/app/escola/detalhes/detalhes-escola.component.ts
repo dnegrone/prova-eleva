@@ -1,5 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from '../../core/storage/storage.service';
 
 @Component({
   selector: 'app-detalhes-escola',
@@ -15,7 +16,10 @@ export class DetalhesEscolaComponent implements OnInit {
   @Output() cnpj: number = 0;
   @Output() qtdAlunos: number = 0;
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private storageService: StorageService
+  ) { }
 
   ngOnInit(): void {
     this.nomeEscola = this.dadosEscola.nomeEscola;
@@ -25,8 +29,8 @@ export class DetalhesEscolaComponent implements OnInit {
   }
 
   modificarCadastroEscola() {
-    sessionStorage.setItem('modificar', 'true');
-    this.router.navigateByUrl('/escola/cadastrar')
+    this.storageService.setSessionStorage('modificar', true);
+    this.router.navigateByUrl('/escola/cadastrar');
   }
 
   confirmaCadastroEscola(){

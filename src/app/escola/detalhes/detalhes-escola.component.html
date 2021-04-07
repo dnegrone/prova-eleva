@@ -3,41 +3,41 @@
         <h2>Detalhes da Escola {{ nomeEscola }}</h2>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <strong>Nome da Escola</strong>
             <p class="lead">{{nomeEscola}}</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <strong>Nome do Responsável da Escola</strong>
             <p class="lead">{{nomeResponsavelEscola}}</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <strong>CNPJ</strong>
             <p class="lead">{{cnpj}}</p>
         </div>
     </div>
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <strong>Qtd. de Alunos</strong>
             <p class="lead">{{qtdAlunos}}</p>
         </div>
     </div>
     <div class="row mt-3">
-        <div class="col-6">
+        <div class="col-12 col-md-12">
             <button
                 type="button"
                 (click)="confirmaCadastroEscola()"
-                class="btn btn-primary mr-2">
+                class="btn btn-primary mr-2 mb-2">
                 Confirmar Cadastro
             </button>
             <button
                 type="button"
                 (click)="modificarCadastroEscola()"
-                class="btn btn-outline-secondary">
+                class="btn btn-outline-secondary mb-2">
                 Modificar Dados
             </button>
         </div>
