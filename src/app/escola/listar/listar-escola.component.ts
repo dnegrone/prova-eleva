@@ -1,6 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { StorageService } from '../../core/storage/storage.service';
+import { IEscolaSalvarModel } from '../escola.model';
+import { EscolaService } from '../escola.service';
 
 @Component({
   selector: 'app-listar-escola',
@@ -9,24 +10,17 @@ import { StorageService } from '../../core/storage/storage.service';
 })
 export class ListarEscolaComponent implements OnInit {
 
-  @Output() escola: any;
+  @Output() escolas: IEscolaSalvarModel[] = [];
+  listaEscolas: string[] = [];
 
   constructor(
     private router: Router,
-    private storageService: StorageService
+    private escolaService: EscolaService
   ) { }
 
   ngOnInit(): void {
-    this.startDb('db_escola');
-  }
-
-  startDb(key: string) {
-    if(this.storageService.hasSessionStorage(key)) {
-      this.escola = this.storageService.getSessionStorage(key);
-      return this.escola;
-    }
-    
-    // this.storageService.getSessionStorage('db_escola');
+    this.escolas = this.escolaService.listar();
+    this.listaEscolas = this.escolaService.listarEscolas();
   }
 
   cadastrar() {
@@ -42,6 +36,7 @@ export class ListarEscolaComponent implements OnInit {
 
   excluir() {
     return alert('A escola será excluída.')
+    this.router.navigateByUrl('/escolas')
   }
 
 }

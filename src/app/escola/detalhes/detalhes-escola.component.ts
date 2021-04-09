@@ -9,7 +9,7 @@ import { StorageService } from '../../core/storage/storage.service';
 })
 export class DetalhesEscolaComponent implements OnInit {
 
-  dadosEscola = JSON.parse(sessionStorage.escola);
+  dadosEscola = this.storageService.getSessionStorage('escola');
 
   @Output() nomeEscola: string = '';
   @Output() nomeResponsavelEscola: string = '';
@@ -37,7 +37,6 @@ export class DetalhesEscolaComponent implements OnInit {
     alert('Escola cadastrada com sucesso!');
     this.storageService.setSessionStorage('db_escola', this.dadosEscola);
     this.storageService.removeSessionStorage('escola');
-    // sessionStorage.removeItem('escola');
     this.router.navigateByUrl('/escola');
   }
 

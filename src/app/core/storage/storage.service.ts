@@ -12,6 +12,11 @@ export class StorageService {
     getSessionStorage(key: string) {
         const storageValue: any = window.sessionStorage.getItem(key);
         return JSON.parse(storageValue);
+        // let cloneStorageValue: any = [];
+        // cloneStorageValue.push(storageValue);
+        // console.log("cloneStorageValue", cloneStorageValue);
+        // console.log("storageValue", storageValue);
+        // console.log("JSON.parse(storageValue)", JSON.parse(storageValue));
     }
     removeSessionStorage(key: string) {
         window.sessionStorage.removeItem(key);
