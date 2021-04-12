@@ -18,12 +18,9 @@
             <div class="form-group col-12 col-md-4">
                 <label class="control-label" for="escolas">Escola</label>
                 <select class="form-control" id="escolas">
+                    <option value="" selected>-- Escolha uma escola --</option>
                     <option *ngFor="let escola of listaEscolas" [value]="escola">{{escola}}</option>
                 </select>
-            </div>
-            <div class="form-group col-12 col-md-6">
-                <label class="control-label" for="nome-responsavel-escola">Nome do Responsável pela Escola</label>
-                <input type="text" class="form-control" id="nome-responsavel-escola">
             </div>
         </div>
         <div class="row mt-2">
@@ -38,22 +35,22 @@
                 <thead class="bg-verde-claro">
                     <tr>
                         <th>Nome da Escola</th>
-                        <th>Nome do Responsável pela Escola</th>
-                        <th>Qtd. de Alunos</th>
+                        <th>Responsável</th>
+                        <th>Telefone da Escola</th>
                         <th>CNPJ</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let escola of escolas">
+                    <tr *ngFor="let escola of escolas; index as i">
                         <td>{{escola.nomeEscola}}</td>
                         <td>{{escola.nomeResponsavelEscola}}</td>
-                        <td>{{escola.qtdAlunos}}</td>
+                        <td>{{escola.telefone}}</td>
                         <td>{{escola.cnpj}}</td>
                         <td>
-                            <a (click)="editar()" class="mr-2"><i class="fa fa-pencil"></i></a>
-                            <a (click)="detalhes()" class="mr-2"><i class="fa fa-search"></i></a>
-                            <a (click)="excluir()"><i class="fa fa-close"></i></a>
+                            <a (click)="editar(i)" class="mr-2"><i class="fa fa-pencil fa-lg"></i></a>
+                            <a (click)="detalhes(i)" class="mr-2"><i class="fa fa-search fa-lg"></i></a>
+                            <a (click)="excluir(i)" href="#"><i class="fa fa-trash-o fa-lg"></i></a>
                         </td>
                     </tr>
                 </tbody>

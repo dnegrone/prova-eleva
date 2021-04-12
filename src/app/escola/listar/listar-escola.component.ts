@@ -19,24 +19,31 @@ export class ListarEscolaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.escolas = this.escolaService.listar();
-    this.listaEscolas = this.escolaService.listarEscolas();
+    this.escolas = this.escolaService.listarEscolas();
+    this.listaEscolas = this.escolaService.comboListarEscolas();
   }
 
   cadastrar() {
     this.router.navigate(['escola','cadastrar']);
   }
-  editar() {
-    return alert('Editar')
+
+  editar(id: number) {
+    this.escolaService.editarEscola(id);
+    this.escolaService.excluirEscola(id);
+    this.router.navigate(['escola','editar'])
   }
 
-  detalhes() {
-    return alert('Entrando em detalhes da escola')
+  detalhes(id: number) {
+    this.escolaService.editarEscola(id);
+    this.router.navigate(['escola','detalhes'])
   }
 
-  excluir() {
-    return alert('A escola será excluída.')
-    this.router.navigateByUrl('/escolas')
+  excluir(id: number) {
+    this.escolaService.excluirEscola(id);
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/escola']);
+    return ;
   }
 
 }

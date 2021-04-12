@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { StorageService } from '../../core/storage/storage.service';
@@ -6,13 +6,15 @@ import { IEscolaSalvarModel } from '../escola.model';
 import { EscolaService } from '../escola.service';
 
 @Component({
-  selector: 'app-cadastrar-escola',
-  templateUrl: './cadastrar-escola.component.html',
-  styleUrls: ['./cadastrar-escola.component.scss']
+  selector: 'app-editar-escola',
+  templateUrl: './editar-escola.component.html',
+  styleUrls: ['./editar-escola.component.scss']
 })
-export class CadastrarEscolaComponent implements OnInit {
+export class EditarEscolaComponent implements OnInit {
 
-  cadastrarEscolaForm!: FormGroup;
+  @Output() escola: IEscolaSalvarModel[] = [];
+  
+  EditarEscolaForm!: FormGroup;
   enviado = false;
   KEY: string = 'escola';
 
@@ -24,24 +26,35 @@ export class CadastrarEscolaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cadastrarEscolaForm = this.formBuilder.group({
+    this.escola = this.escolaService.listarEscolaParaEditar();
+
+    this.EditarEscolaForm = this.formBuilder.group({
       nomeEscola: ['', Validators.required],
       nomeResponsavelEscola: ['', Validators.required],
       telefone: ['', Validators.required],
       cnpj: ['', Validators.required]
     });
 
+    this.escola.map(escola => {
+      this.EditarEscolaForm.setValue({
+        nomeEscola: escola.nomeEscola,
+        nomeResponsavelEscola: escola.nomeResponsavelEscola,
+        telefone: escola.telefone,
+        cnpj: escola.cnpj
+      })
+    });
+
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.cadastrarEscolaForm.controls; }
-  get formValues() { return this.cadastrarEscolaForm.value as IEscolaSalvarModel;}
+  get f() { return this.EditarEscolaForm.controls; }
+  get formValues() { return this.EditarEscolaForm.value as IEscolaSalvarModel;}
 
   onSubmit() {
     this.enviado = true;
 
     // Formulário inválido não será enviado
-    if(this.cadastrarEscolaForm.invalid) {
+    if(this.EditarEscolaForm.invalid) {
       return;
     }
 
@@ -51,7 +64,7 @@ export class CadastrarEscolaComponent implements OnInit {
 
   onReset() {
     this.enviado = false;
-    this.cadastrarEscolaForm.reset();
+    this.EditarEscolaForm.reset();
   }
 
 }

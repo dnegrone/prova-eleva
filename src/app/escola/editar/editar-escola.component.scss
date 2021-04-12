@@ -1,0 +1,27 @@
+.page-header {
+    border-bottom: solid 1px #ddd;
+}
+.container-lg {
+    max-width: 1260px;
+}
+.form-control {
+    padding: 1.3rem 0.75rem;
+}
+.control-label {
+    font-size: 1.05rem;
+}
+a.small {
+    text-decoration: none;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #c0c0c0;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #c0c0c0;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #c0c0c0;
+}

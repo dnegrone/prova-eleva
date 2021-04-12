@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ListarEscolaComponent } from './escola/listar/listar-escola.component';
 import { CadastrarEscolaComponent } from './escola/cadastrar/cadastrar-escola.component';
+import { EditarEscolaComponent } from './escola/editar/editar-escola.component';
 import { DetalhesEscolaComponent } from './escola/detalhes/detalhes-escola.component';
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'escola/cadastrar',
     component: CadastrarEscolaComponent
+  },
+  {
+    path: 'escola/editar',
+    component: EditarEscolaComponent
   },
   {
     path: 'escola/detalhes',
@@ -31,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes)], //, { onSameUrlNavigation: 'reload'}
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

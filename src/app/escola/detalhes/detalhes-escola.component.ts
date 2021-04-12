@@ -2,6 +2,9 @@ import { Component, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../../core/storage/storage.service';
 
+import { IEscolaSalvarModel } from '../escola.model';
+import { EscolaService } from '../escola.service';
+
 @Component({
   selector: 'app-detalhes-escola',
   templateUrl: './detalhes-escola.component.html',
@@ -9,35 +12,27 @@ import { StorageService } from '../../core/storage/storage.service';
 })
 export class DetalhesEscolaComponent implements OnInit {
 
-  dadosEscola = this.storageService.getSessionStorage('escola');
+  @Output() escola: IEscolaSalvarModel[] = [];
 
   @Output() nomeEscola: string = '';
   @Output() nomeResponsavelEscola: string = '';
   @Output() cnpj: number = 0;
-  @Output() qtdAlunos: number = 0;
+  @Output() telefone: number = 0;
 
   constructor(
     private router: Router,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private escolaService: EscolaService
   ) { }
 
   ngOnInit(): void {
-    this.nomeEscola = this.dadosEscola.nomeEscola;
-    this.nomeResponsavelEscola = this.dadosEscola.nomeResponsavelEscola;
-    this.cnpj = this.dadosEscola.cnpj;
-    this.qtdAlunos = this.dadosEscola.qtdAlunos;
-  }
-
-  modificarCadastroEscola() {
-    this.storageService.setSessionStorage('modificar', true);
-    this.router.navigateByUrl('/escola/cadastrar');
-  }
-
-  confirmaCadastroEscola(){
-    alert('Escola cadastrada com sucesso!');
-    this.storageService.setSessionStorage('db_escola', this.dadosEscola);
-    this.storageService.removeSessionStorage('escola');
-    this.router.navigateByUrl('/escola');
+    this.escola = this.escolaService.listarEscolaParaEditar();
+    this.escola.map(escola => {
+      this.nomeEscola = escola.nomeEscola;
+      this.nomeResponsavelEscola = escola.nomeResponsavelEscola;
+      this.cnpj = escola.cnpj;
+      this.telefone = escola.telefone;
+    });    
   }
 
 }

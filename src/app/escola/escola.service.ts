@@ -5,7 +5,8 @@ import { IEscolaSalvarModel } from './escola.model';
 @Injectable({ providedIn: 'root'})
 
 export class EscolaService {
-    private readonly escolaKey: string = 'escola'; // lint vai reclamar (tipagem redundante)
+    private readonly escolaKey: string = 'escola';
+    private readonly editarEscolaKey: string = 'editarEscola'; 
 
     constructor(private storageService: StorageService) {}
 
@@ -19,13 +20,33 @@ export class EscolaService {
         this.storageService.setSessionStorage(this.escolaKey, [escola]);
     }
 
-    listar(): IEscolaSalvarModel[] {
+    listarEscolas(): IEscolaSalvarModel[] {
         const escolas = this.storageService.getSessionStorage(this.escolaKey);
         return escolas || [];
     }
 
-    listarEscolas(): string[] {
+    listarEscolaParaEditar(): IEscolaSalvarModel[] {
+        const escola = this.storageService.getSessionStorage(this.editarEscolaKey);        
+        return escola.map((escola: IEscolaSalvarModel) => escola);
+    }
+
+    comboListarEscolas(): string[] {
         const escolas = this.storageService.getSessionStorage(this.escolaKey);
         return escolas.map((escola: IEscolaSalvarModel) => escola.nomeEscola)
+    }
+
+    editarEscola(id: number) {
+        const escolas = this.storageService.getSessionStorage(this.escolaKey);
+        const escola = escolas.splice(id, 1);
+        this.storageService.setSessionStorage('editarEscola', escola);
+    }
+
+    excluirEscola(id: number) {
+        const escolas = this.storageService.getSessionStorage(this.escolaKey);
+        if(escolas) {
+            escolas.splice(id, 1);
+            this.storageService.setSessionStorage(this.escolaKey, escolas);
+            return ;
+        }
     }
 }
