@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NotificationService } from '../../core/notification.service';
 
 import { IEscolaSalvarModel } from '../escola.model';
 import { EscolaService } from '../escola.service';
@@ -18,7 +19,8 @@ export class CadastrarEscolaComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private escolaService: EscolaService
+    private escolaService: EscolaService,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class CadastrarEscolaComponent implements OnInit {
     }
 
     this.escolaService.salvar(this.formValues);
+    this.notificationService.showSuccess('Escola cadastrada com sucesso');
     this.router.navigateByUrl('/escola');
   }
 

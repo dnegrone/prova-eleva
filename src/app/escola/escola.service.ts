@@ -32,7 +32,10 @@ export class EscolaService {
 
     comboListarEscolas(): string[] {
         const escolas = this.storageService.getSessionStorage(this.escolaKey);
-        return escolas.map((escola: IEscolaSalvarModel) => escola.nomeEscola)
+        if(escolas) {
+            return escolas.map((escola: IEscolaSalvarModel) => escola.nomeEscola);
+        }
+        return [];
     }
 
     editarEscola(id: number) {
