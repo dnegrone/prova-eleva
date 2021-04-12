@@ -1,37 +1,35 @@
 <div class="container">
     <div class="page-header mt-3 mb-3">
         <h2>
-            <span class="d-none d-md-block">Lista de Escolas</span>
-            <span class="h4 d-block d-md-none">Lista de Escolas</span>
+            <span class="d-none d-md-block">Lista de Turma</span>
+            <span class="h4 d-block d-md-none">Lista de Turma</span>
         </h2>
         <div class="float-right">
-            <a (click)="cadastrar()"
+            <!-- (click)="cadastrar()" -->
+            <a 
+                routerLink="/turma/cadastrar"
                 class="btn btn-outline-secondary btn-sm">
                 <i class="d-block d-md-none fa fa-plus"></i>
-                <span class="d-none d-md-block">Cadastrar Nova Escola</span>
+                <span class="d-none d-md-block">Cadastrar Nova Turma</span>
             </a>
         </div>
     </div>
     <div class="clearfix"></div>
     
-    <div class="resultados">
-        <div class="table-responsive-sm">
+    <div class="resultados mt-3 row px-0">
+        <div class="table-responsive-sm col-12 col-md-6">
             <table class="table">
                 <thead class="bg-verde-claro">
                     <tr>
                         <th>Nome da Escola</th>
-                        <th>Responsável</th>
-                        <th>Telefone da Escola</th>
-                        <th>CNPJ</th>
-                        <th>Ações</th>
+                        <th>Turmas</th>
+                        <th style="width: 110px;">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let escola of escolas; index as i">
-                        <td>{{escola.nomeEscola}}</td>
-                        <td>{{escola.nomeResponsavelEscola}}</td>
-                        <td>{{escola.telefone}}</td>
-                        <td>{{escola.cnpj}}</td>
+                    <tr *ngFor="let turma of turmas; index as i">
+                        <td>{{turma.nomeEscola}}</td>
+                        <td>{{turma.turma}}</td>
                         <td>
                             <a (click)="editar(i)" class="mr-2"><i class="fa fa-pencil fa-lg"></i></a>
                             <a (click)="detalhes(i)" class="mr-2"><i class="fa fa-search fa-lg"></i></a>

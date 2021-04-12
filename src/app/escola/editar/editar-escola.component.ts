@@ -16,12 +16,10 @@ export class EditarEscolaComponent implements OnInit {
   
   EditarEscolaForm!: FormGroup;
   enviado = false;
-  KEY: string = 'escola';
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private storageService: StorageService,
     private escolaService: EscolaService
   ) {}
 

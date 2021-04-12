@@ -5,6 +5,10 @@ import { ListarEscolaComponent } from './escola/listar/listar-escola.component';
 import { CadastrarEscolaComponent } from './escola/cadastrar/cadastrar-escola.component';
 import { EditarEscolaComponent } from './escola/editar/editar-escola.component';
 import { DetalhesEscolaComponent } from './escola/detalhes/detalhes-escola.component';
+import { CadastrarTurmaComponent } from './turma/cadastrar/cadastrar-turma.component';
+import { DetalhesTurmaComponent } from './turma/detalhes/detalhes-turma.component';
+import { EditarTurmaComponent } from './turma/editar/editar-turma.component';
+import { ListarTurmaComponent } from './turma/listar/listar-turma.component';
 
 const routes: Routes = [
   {
@@ -22,6 +26,22 @@ const routes: Routes = [
   {
     path: 'escola/detalhes',
     component: DetalhesEscolaComponent
+  },
+  {
+    path: 'turma',
+    component: ListarTurmaComponent
+  },
+  {
+    path: 'turma/cadastrar',
+    component: CadastrarTurmaComponent
+  },
+  {
+    path: 'turma/editar',
+    component: EditarTurmaComponent
+  },
+  {
+    path: 'turma/detalhes',
+    component: DetalhesTurmaComponent
   },
   {
     path: '',

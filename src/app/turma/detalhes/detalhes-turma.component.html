@@ -1,0 +1,27 @@
+<div class="container-lg">
+    <div class="page-header mt-3 mb-4">
+        <h2>
+            <span class="d-none d-md-block">Detalhes da Turma: {{ nomeTurma }}</span>
+            <span class="h4 d-block d-md-none">Detalhes da Turma:</span><div class="h4 d-block d-md-none text-muted mt-1">{{ nomeTurma }}</div>
+        </h2>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <strong>Nome da Escola</strong>
+            <p class="lead">{{nomeEscola}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <strong>Nome da Turma</strong>
+            <p class="lead">{{nomeTurma}}</p>
+        </div>
+    </div> 
+    <div class="row mt-3">
+        <div class="col-12 col-md-12">
+            <a routerLink="/turma" class="btn btn-primary mb-2">
+                Voltar para a listagem
+            </a>
+        </div>
+    </div>
+</div>

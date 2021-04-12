@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { StorageService } from '../../core/storage/storage.service';
+
 import { IEscolaSalvarModel } from '../escola.model';
 import { EscolaService } from '../escola.service';
 
@@ -14,12 +14,10 @@ export class CadastrarEscolaComponent implements OnInit {
 
   cadastrarEscolaForm!: FormGroup;
   enviado = false;
-  KEY: string = 'escola';
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private storageService: StorageService,
     private escolaService: EscolaService
   ) {}
 

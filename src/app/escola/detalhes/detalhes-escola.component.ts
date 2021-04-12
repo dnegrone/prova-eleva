@@ -1,6 +1,4 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { Router } from '@angular/router';
-import { StorageService } from '../../core/storage/storage.service';
 
 import { IEscolaSalvarModel } from '../escola.model';
 import { EscolaService } from '../escola.service';
@@ -20,8 +18,6 @@ export class DetalhesEscolaComponent implements OnInit {
   @Output() telefone: number = 0;
 
   constructor(
-    private router: Router,
-    private storageService: StorageService,
     private escolaService: EscolaService
   ) { }
 

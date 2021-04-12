@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
 import { EscolaModule } from './escola/escola.module';
+import { TurmaModule } from './turma/turma.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { EscolaModule } from './escola/escola.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    EscolaModule
+    EscolaModule,
+    TurmaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
